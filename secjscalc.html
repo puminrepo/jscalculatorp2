@@ -1,0 +1,800 @@
+<!doctype html>
+<htmnl>
+    <head>
+        <title>
+            On Line Calculator
+        </title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+        <link href="style.css" rel="stylesheet">
+    </head>
+    <body>
+    <button onclick=`factorial(7)`>7!</button>
+        <div class="card">
+            
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td  colspan="7">
+                            <div class="display">
+                                <div id="h_display">
+                                    <i class="fas fa-history" style="color: #6d6b6b;"></i>
+                                    <p id="first_screen"></p>
+                                </div>
+                                <div id="b_display">
+                                    <p id="second_screen">0</p>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><button class="btn btn-secondary" onclick="angle('Rad')">Rad</button></td>
+                        <td><button class="btn btn-secondary" onclick="angle('Deg')">Deg</button></td>
+                        <td><button class="btn btn-secondary" onclick="concatenate('!')">x!</button></td>
+                        <td><button class="btn btn-secondary" onclick="concatenate('(')">(</button></td>
+                        <td><button class="btn btn-secondary" onclick="concatenate(')')">)</button></td>
+                        <td><button class="btn btn-secondary" onclick="concatenate('%')">%</button></td>
+                        <td><button class="btn btn-secondary" onclick="clr()">AC</button></td>
+                    </tr>
+                    <tr>
+                        <td><button class="btn btn-secondary" id="inv">Inv</button></td>
+                        <td><button class="btn btn-secondary" id="sin" onclick="concatenate('sin(')">sin</button></td>
+                        <td><button class="btn btn-secondary" id="ln" onclick="concatenate('ln(')">ln</button></td>
+                        <td><button class="btn btn-num" onclick="concatenate('7')">7</button></td>
+                        <td><button class="btn btn-num" onclick="concatenate('8')">8</button></td>
+                        <td><button class="btn btn-num" onclick="concatenate('9')">9</button></td>
+                        <td><button class="btn btn-secondary" onclick="concatenate('&divide;')">&divide;</button></td>
+                    </tr>
+                    <tr>
+                        <td><button class="btn btn-secondary" onclick="concatenate('&pi;')">&pi;</button></td>
+                        <td><button class="btn btn-secondary" id="cos" onclick="concatenate('cos(')">cos</button></td>
+                        <td><button class="btn btn-secondary" id="log" onclick="concatenate('log(')">log</button></td>
+                        <td><button class="btn btn-num" onclick="concatenate('4')">4</button></td>
+                        <td><button class="btn btn-num" onclick="concatenate('5')">5</button></td>
+                        <td><button class="btn btn-num" onclick="concatenate('6')">6</button></td>
+                        <td><button class="btn btn-secondary" onclick="concatenate('&times;')">&times;</button></td>
+                    </tr>
+                    <tr>
+                        <td><button class="btn btn-secondary" onclick="concatenate('e')">e</button></td>
+                        <td><button class="btn btn-secondary" id="tan" onclick="concatenate('tan(')">tan</button></td>
+                        <td><button class="btn btn-secondary" id="root" onclick="concatenate('²&radic;(')">²&radic;</button></td>
+                        <td><button class="btn btn-num" onclick="concatenate('1')">1</button></td>
+                        <td><button class="btn btn-num" onclick="concatenate('2')">2</button></td>
+                        <td><button class="btn btn-num" onclick="concatenate('3')">3</button></td>
+                        <td><button class="btn btn-secondary" onclick="concatenate('-')">-</button></td>
+                    </tr>
+                    <tr>
+                        <td><button class="btn btn-secondary" id="ans" onclick="concatenate('Ans')">Ans</button></td>
+                        <td><button class="btn btn-secondary" onclick="concatenate('E')">EXP</button></td>
+                        <td><button class="btn btn-secondary" id="pow" onclick="power()">x&#x02B8;</button></td>
+                        <td><button class="btn btn-num" onclick="concatenate('0')">0</button></td>
+                        <td><button class="btn btn-num" onclick="concatenate('.')">.</button></td>
+                        <td><button class="btn btn-info" onclick="calculate()">=</button></td>
+                        <td><button class="btn btn-secondary" onclick="concatenate('+')">+</button></td>
+                    </tr>
+                </tbody>
+                
+            </table>
+        </div>
+        <div class="container-fluid col-md-2"> 
+            
+        </div>
+        <div>
+
+        </div>
+    </body>
+    <footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+        <script src="server.js"></script>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+        <script>
+            // get element for dispplay
+            let second_screen = document.getElementById("second_screen");
+
+            // define and initialise global variables
+            let input = "";
+            let temp = "";
+            let expression = "";
+            let super_script = "";
+            let change = false;
+            let change_one = false;
+            let super_box = "";
+            let ans_store = "";
+            let clicks = false;
+            
+
+            // EventListener
+            let btn = "";
+            let inv = document.getElementById("inv");
+            let sin = document.getElementById("sin");
+            let ln = document.getElementById("ln");
+            let cos = document.getElementById("cos");
+            let log = document.getElementById("log");
+            let tan = document.getElementById("tan");
+            let root = document.getElementById("root");
+            let ans = document.getElementById("ans");
+            let pow = document.getElementById("pow");
+            console.log(root.innerText);
+            inv.addEventListener("click", function(){
+                console.log("lasla");
+                console.log(clicks);
+                
+                if(clicks){
+                    console.log("1st");
+                    clicks = false;
+                    sin.innerHTML = "sin";
+                    ln.innerHTML = "ln";
+                    cos.innerHTML = "cos";
+                    log.innerHTML = "log";
+                    tan.innerHTML = "tan";
+                    root.innerHTML = "²&radic;";
+                    ans.innerHTML = "Ans";
+                    pow.innerHTML = "x<sup>y</sup>";
+                    sin.onclick = function(){
+                        delete sin.onclick
+                        concatenate("sin(");
+                    }  
+                    ln.onclick = function(){
+                        delete ln.onclick
+                        concatenate("ln(");
+                    }
+                    cos.onclick = function(){
+                        delete cos.onclick
+                        concatenate("cos(");
+                    }
+                    log.onclick = function(){
+                        delete log.onclick
+                        concatenate("log(");
+                        
+                    }
+                    tan.onclick = function(){
+                        delete tan.onclick
+                        concatenate("tan(");
+                    }
+                    root.onclick = function(){
+                        delete root.onclick
+                        concatenate('²√(');
+                    }
+                    ans.onclick = function(){
+                        delete ans.onclick
+                        concatenate('Ans');
+                    }
+                    pow.onclick = function(){
+                        //concatenate('^');
+                        //power();
+                    }
+                    console.log(pow.innerText);
+                    
+                }else if(!clicks){
+                    console.log("2nd");
+                    clicks = true;
+                    sin.innerHTML = "sin<sup>-1</sup>";
+                    console.log(sin.innerText);
+                    ln.innerHTML = "e<sup>x</sup>";
+                    cos.innerHTML = "cos<sup>-1</sup>";
+                    log.innerHTML = "10<sup>x</sup>";
+                    tan.innerHTML = "tan<sup>-1</sup>";
+                    root.innerHTML = "x<sup>2</sup>";
+                    ans.innerHTML = "Rnd";
+                    pow.innerHTML = "&radic;";
+                    sin.onclick = function(){
+                        concatenate("asin(");
+                    }
+                    ln.onclick = function(){
+                        concatenate("e");
+                        power();
+                    }
+                    cos.onclick = function(){
+                        concatenate("acos(");
+                    }
+                    log.onclick = function(){
+                        concatenate("10");
+                        power();
+                    }
+                    tan.onclick = function(){
+                        concatenate("atan(");
+                    }
+                    root.onclick = function(){
+                        concatenate("²");
+                    }
+                    ans.onclick = function(){
+                        concatenate("Rnd");
+                    }
+                    pow.onclick = function(){
+                        concatenate("√");
+                    }
+                    console.log(pow.innerText);
+                }
+            });
+            sin.addEventListener("click", function(){
+                btn = sin;
+                change_one = true;
+            });
+            ln.addEventListener("click", function(){
+                btn = ln;
+                change_one = true;
+            }); 
+            cos.addEventListener("click", function(){
+                btn = cos;
+                change_one = true;
+            });
+            log.addEventListener("click", function(){
+                btn = log;
+                change_one = true;
+            });
+            tan.addEventListener("click", function(){
+                btn = tan;
+                change_one = true;
+            }); 
+            root.addEventListener("click", function(){
+                btn = root;
+                change_one = true;
+            });
+            ans.addEventListener("click", function(){
+                if(ans.innerText === "Ans"){
+                    
+                    second_screen.innerText = temp;
+                    change_one = false;
+                }
+                if(ans.innerText === "Rnd"){
+                    second_screen.innerText = Math.random();
+                } 
+            });
+            pow.addEventListener("click", function(){
+                btn = pow;
+                change_one = true;
+            });
+
+
+
+            // Factorial
+
+            function factorial(a){
+                if(a < 0){
+                    second_screen.innerText = "Domaion Error";
+                    return -1;
+                }
+                if(a === 0){
+                    return 1;
+                }
+                if(a > 0){
+                    return a * factorial(a-1);
+                }
+            }
+
+            // Function Implementation
+
+            function no_concatenate(func){
+                if(
+                    func !== "arccos(" && func !== "10" &&
+                    func !== "arctan(" && func !== "x2" && 
+                    func !== "²" && func !== "^"&& func !== "^"){
+                    return true;
+                }
+                return false;
+            }
+
+            function concatenate(value){
+                console.log(value);
+                console.log(change);
+                if(!change){
+                    console.log("Calling Subscript");
+                    temp += value;
+                    second_screen.innerText = temp; 
+                    console.log(no_concatenate(value));
+                    if(no_concatenate(value)){
+                       if(value === "%"){
+                            input += "/100";
+                        }else if(value === "π"){
+                            input += Math.PI;
+                                                       
+                        }else if(value === "×"){
+                            input += "*";
+                        }else if(value === "÷"){
+                            input += "/";
+                        }else{
+                            console.log("Oh no");
+                            input += value;
+                        }
+                        
+                    } 
+                    //console.log(input);
+                    
+                }
+                if(change){
+                    console.log("Calling Superscript");
+                    super_script += value;
+                    super_box.style.fontSize = "20px";
+                    super_box.style.display = "flex";
+                    super_box.style.border = "none";
+                    super_box.innerText = super_script;
+                }
+            } 
+//calculates input string
+            function calculate(){ 
+                if(!change_one){
+                    if(temp === "π"){
+                        second_screen.innerText = Math.PI;
+                    }else
+                    if(temp === "e"){
+                        second_screen.innerText = Math.E;
+                    }else if(temp === "Ans"){
+                        second_screen.innerText = ans_store;
+                    }if(temp === "Rnd"){
+                        second_screen.innerText = "";
+                    }
+                    
+                    else {
+                        //alert(input);
+                        //checks for pi constant
+                        let pi = input.indexOf("3.141592653589793")
+                        let fact = input.indexOf("!")
+                        let eu = input.indexOf("e")
+                        if(pi !== -1){    
+                            let strI = input.indexOf("3.141592653589793");
+                            if(strI-1 !== ('*'||'/'||'+'||'-')&&(strI !==0)){
+                                  let half1 = input.slice(strI,17);
+                                  //alert(half1);
+                                  let half2 = input.slice(0,strI);
+                                  //alert(half2);
+                                  input =half1 + '*' + half2;
+                                  //alert(input);
+                                //alert("aft" + strI);
+                            }
+                            else if(strI+1 !== ('*'||'/'||'+'||'-')&&(strI==0)){
+                               //alert("b4" + strI);
+                               let half2 = input.slice(strI,17);
+                                  //alert(half2);
+                                  let half1 = input.slice(17,);
+                                  //alert(half1);
+                                  if((strI !== 0)){
+                                      input = Math.PI * half1;
+                                  }else{
+                                    input = Math.PI;
+                                  }
+                                  //alert(input);
+
+                            }
+                        }else
+                        //alert(input);
+                        ////checks for factorial sign ! in string
+                        
+                        if(fact !== -1){    
+                            let strI = input.indexOf("!");
+                            if(strI-1 !== ('*'||'/'||'+'||'-')&&(strI ==1)){
+                                  let half1 = input.slice(0,strI);
+
+                                input = factorial(half1);
+                            }
+                            else if(strI-1 !== ('*'||'/'||'+'||'-')&&(strI > 0)){
+                               //alert("b4" + strI);
+                               let half2 = input.slice(0,strI-1);
+                                  //alert(half2);
+                                  let half1 = input.slice(strI-1,strI);
+                                  //alert(half1);
+                                  
+                                  input =half1 + '*' + factorial(half1);
+                                  //alert(input);
+
+                            }
+                        }else
+                       // alert(input);
+                        ////checks for eulars # in string
+
+                        if(eu !== -1){ 
+                           // alert(input)   
+                            let strI = input.indexOf("e");
+                            if(strI-1 !== ('*'||'/'||'+'||'-')&&(strI ==1)){
+                                  let half1 = input.slice(0,strI);
+                                 // alert(half1);
+                                  let half2 = input.slice(strI,);
+                                  alert(half2);
+                                  input =half1 * Math.E;
+                                  alert(input);
+                               // alert("aft" + strI);
+                                
+                            }
+                            else if(strI+1 !== ('*'||'/'||'+'||'-')){
+                               alert("b4" + strI);
+                              // let half2 = input.slice(0,strI);
+                                //  alert(half2);
+                                  let half1 = input.slice(strI+1,);
+                                  //debugger
+                                  //alert(half1);
+                                  
+                                  if( (half1 === ""|| half1 === undefined)){
+                                    input = Math.E ;                                
+                                  }else{
+                                    input = Math.E * half1;
+                                          
+                                  }
+                                  
+                                  //alert(input);
+
+                            }
+                        }
+
+                        console.log(input);
+                        second_screen.innerText = eval(input);
+                        console.log(eval(input));
+                        input = eval(input);
+                        ans_store = input;
+                    }
+                } 
+                if(change_one){
+                    process(btn);
+                    console.log(eval(input));
+                    console.log("Hi there!")
+                    input = eval(input);
+                    second_screen.innerText = input;
+                    ans_store = input;
+                }  
+            }
+
+            function clr(){
+                second_screen.innerText = "0";
+                ans_store = input;
+                input = "";
+                temp = "";
+                expression = "";
+                super_script = "";
+                change = false;
+                change_one = false;
+                super_box = "";
+            }
+            function del(){
+                for(let i = 0; i < (input.length - 1);i++){
+                    temp += input.charAt(i); 
+                }
+                input = temp;
+                temp = "";
+                second_screen.innerText = input;
+            }
+
+            function power(){
+                input +='**';
+                change = true;
+                create_super_box();    
+            }
+
+            function create_super_box(){
+                second_screen = document.getElementById("second_screen");
+                super_box = document.createElement("p");
+                super_box.style.width = "max-content";
+                super_box.style.height = "22px";
+                super_box.style.float = "right";
+                super_box.style.border = "1px solid #e0dfdf";
+                 let append_box = second_screen.appendChild(super_box);
+            }
+
+            function delete_super_box(){
+                super_box = "";
+            }
+
+            function process(btn){
+                if(btn.id === "sin"){
+                    if(btn.innerText === "sin"){
+                        console.log("sin here!");
+                        let strI = input.indexOf('sin(');
+                        //alert(strI);
+                        if(strI-1 !== ('*'||'/'||'+'||'-')&&(strI !== 0)){
+                                  let half1 = input.slice(strI,);
+                                  //alert(half1);
+                                  let half2 = input.slice(0,strI);
+                                  //alert(half2);
+                                  input =half2+ '*Math.' + half1;
+                                  //alert(input);
+                                //alert("aft" + strI);
+                            }
+                            else if(strI+1 !== ('*'||'/'||'+'||'-')&&(strI == 0)){
+                               //alert("b4" + strI);
+                               let half2 = input.slice(strI,);
+                                  //alert(half2);
+                                  let half1 = input.slice(0,strI);
+                                  //alert(half1);
+                                  input =half1+ 'Math.' + half2;
+                                  //alert(input);
+
+                            }
+                        console.log(eval(input));
+                        //input += 'Math.sin(input)';
+                    }
+                    if(btn.innerText === "sin-1"){
+                        console.log("sin-1 here!");
+                        let strI = input.indexOf('asin(');
+                        //alert(strI);
+                        if(strI-1 !== ('*'||'/'||'+'||'-')&&(strI !== 0)){
+                                  let half1 = input.slice(strI,);
+                                  //alert(half1);
+                                  let half2 = input.slice(0,strI);
+                                  //alert(half2);
+                                  input =half2+ '*Math.' + half1;
+                                  //alert(input);
+                                //alert("aft" + strI);
+                            }
+                            else if(strI+1 !== ('*'||'/'||'+'||'-')&&(strI == 0)){
+                               //alert("b4" + strI);
+                               let half2 = input.slice(strI,);
+                                  //alert(half2);
+                                  let half1 = input.slice(0,strI);
+                                  //alert(half1);
+                                  input =half1+ 'Math.' + half2;
+                                  //alert(input);
+
+                            }
+                        console.log(eval(input));
+                        //input += 'Math.sin(input)';
+                    }
+                    
+                }
+                if(btn.id === "ln"){
+                    if(btn.innerText === "ln"){
+                        let strI = input.indexOf('ln(');
+                        //alert(strI);
+                        if((strI-1 !== ('*'||'/'||'+'||'-')&&(strI !== 0))){
+                               //alert("b4" + strI);
+                               let half2 = input.slice(strI+3,);
+                                  //alert(half2);
+                                  let half1 = input.slice(0,strI);
+                                  //alert(half1);
+                                  input =half1+ '*Math.log(' + half2;
+                                  //alert(input);
+
+                            }
+                        else if(strI+1 !== ('*'||'/'||'+'||'-')&&(strI == 0)){
+                                  let half1 = input.slice(strI+3,);
+                                  //alert(half1);
+                                  let half2 = input.slice(0,strI);
+                                  //alert(half2);
+                                  input =half2+ 'Math.log(' + half1;
+                                  //alert(input);
+                                //alert("aft" + strI);
+                            }
+                            
+                        console.log(eval(input));
+                    }
+                    if(btn.innerText === "ex"){
+                        
+                        let half1 = input.slice(1,)
+                        input = Math.exp(eval(super_script));
+                    }
+                }
+                if(btn.id === "cos"){
+                    if(btn.innerText === "cos"){
+                        console.log("cos here");
+                        let strI = input.indexOf('cos(');
+                        //alert(strI);
+                        if(strI-1 !== ('*'||'/'||'+'||'-')&&(strI !== 0)){
+                                  let half1 = input.slice(strI,);
+                                  //alert(half1);
+                                  let half2 = input.slice(0,strI);
+                                  //alert(half2);
+                                  input =half2+ '*Math.' + half1;
+                                  //alert(input);
+                                //alert("aft" + strI);
+                            }
+                            else if(strI+1 !== ('*'||'/'||'+'||'-')&&(strI == 0)){
+                               //alert("b4" + strI);
+                               let half2 = input.slice(strI,);
+                                  //alert(half2);
+                                  let half1 = input.slice(0,strI);
+                                  //alert(half1);
+                                  input =half1+ 'Math.' + half2;
+                                  //alert(input);
+
+                            } 
+                        console.log(eval(input));
+                        //input += 'Math.sin(input)';
+                    }
+                    if(btn.innerText === "cos-1"){
+                        let strI = input.indexOf('acos(');
+                        //alert(strI);
+                        if(strI-1 !== ('*'||'/'||'+'||'-')&&(strI !== 0)){
+                                  let half1 = input.slice(strI,);
+                                  //alert(half1);
+                                  let half2 = input.slice(0,strI);
+                                  //alert(half2);
+                                  input =half2+ '*Math.' + half1;
+                                  //alert(input);
+                                //alert("aft" + strI);
+                            }
+                            else if(strI+1 !== ('*'||'/'||'+'||'-')&&(strI == 0)){
+                               //alert("b4" + strI);
+                               let half2 = input.slice(strI,);
+                                  //alert(half2);
+                                  let half1 = input.slice(0,strI);
+                                  //alert(half1);
+                                  input =half1+ 'Math.' + half2;
+                                  //alert(input);
+
+                            }
+                        console.log(eval(input));
+                        //input += 'Math.sin(input)';
+                    }
+                    
+                }
+                if(btn.id === "log"){
+                    console.log("inv")
+                    if(btn.innerText === "log"){
+                        let strI = input.indexOf('log');
+                        //alert(strI + 'log');
+                        if(strI-1 !== ('*'||'/'||'+'||'-')&&(strI !== 0)){
+                                  let half1 = input.slice(strI+3,);
+                                  //alert(half1);
+                                  let half2 = input.slice(0,strI);
+                                  //alert(half2);
+                                  input =half2+ '*Math.log10' + half1;
+                                  //alert(input);
+                                //alert("aft" + strI);
+                            }
+                            else if(strI+1 !== ('*'||'/'||'+'||'-')&&(strI == 0)){
+                               //alert("b4" + strI);
+                               let half2 = input.slice(strI+3,);
+                                  //alert(half2);
+                                  let half1 = input.slice(0,strI);
+                                  //alert(half1);
+                                  input =half1+ 'Math.log10' + half2;
+                                  //alert(input);
+
+                            }
+                        console.log(eval(input));
+                        //input += 'Math.sin(input)';
+                    }
+                    if(btn.innerText === "10x"){
+                        console.log("inv log here!");
+                        console.log(input);
+                        input = Math.pow(10, eval(super_script));
+                    }
+                   
+                }
+                if(btn.id === "tan"){
+                    if(btn.innerText === "tan"){
+                        let strI = input.indexOf('tan');
+
+                        //alert(strI);
+                        if(strI-1 !== ('*'||'/'||'+'||'-')&&(strI !== 0)){
+                                  let half1 = input.slice(strI,);
+                                  //alert(half1);
+                                  let half2 = input.slice(0,strI);
+                                  //alert(half2);
+                                  input =half2+ '*Math.' + half1;
+                                  //alert(input);
+                                //alert("aft" + strI);
+                            }
+                            else if(strI+1 !== ('*'||'/'||'+'||'-')&&(strI == 0)){
+                               //alert("b4" + strI);
+                               let half2 = input.slice(strI,);
+                                  //alert(half2);
+                                  let half1 = input.slice(0,strI);
+                                  //alert(half1);
+                                  input =half1+ 'Math.' + half2;
+                                  //alert(input);
+
+                            }
+                        console.log(eval(input));
+                        //input += 'Math.sin(input)';
+                    }
+                    if(btn.innerText === "tan-1"){
+                        let strI = input.indexOf('atan');
+                        //alert(strI);
+                        if(strI-1 !== ('*'||'/'||'+'||'-')&&(strI !== 0)){
+                                  let half1 = input.slice(strI,);
+                                  //alert(half1);
+                                  let half2 = input.slice(0,strI);
+                                  //alert(half2);
+                                  input =half2+ '*Math.' + half1;
+                                  //alert(input);
+                                //alert("aft" + strI);
+                            }
+                            else if(strI+1 !== ('*'||'/'||'+'||'-')&&(strI == 0)){
+                               //alert("b4" + strI);
+                               let half2 = input.slice(strI,);
+                                  //alert(half2);
+                                  let half1 = input.slice(0,strI);
+                                  //alert(half1);
+                                  input =half1+ 'Math.' + half2;
+                                  //alert(input);
+
+                            }
+                        console.log(eval(input));
+                        //input += 'Math.sin(input)';
+                    }
+                }
+                if(btn.id === "root"){
+                    if(btn.innerText === "²√"){
+                        let strI = input.indexOf('²√(');
+                        //alert(strI);
+                        if(strI-1 !== ('*'||'/'||'+'||'-')&&(strI !== 0)){
+                                  let half1 = input.slice(strI+2,);
+                                  //alert(half1);
+                                  let half2 = input.slice(0,strI);
+                                  //alert(half2);
+                                  input =half2+ '*Math.sqrt' + half1;
+                                  //alert(input);
+                                //alert("aft" + strI);
+                            }
+                            else if(strI+1 !== ('*'||'/'||'+'||'-')){
+                               //alert("b4" + strI);
+                               let half2 = input.slice(strI+2,);
+                                  //alert(half2);
+                                  let half1 = input.slice(0,strI);
+                                  //alert(half1);
+                                  input =half1+ 'Math.sqrt' + half2;
+                                  //alert(input);
+
+                            }
+                        console.log(eval(input));
+                        //input += 'Math.sin(input)';
+                    }
+                    if(btn.innerText === "x2"){
+                        power();
+                        input += 2 ;
+                    }
+                }
+               
+                if(btn.id === "pow"){
+                    console.log(btn.innerText);
+                    if(btn.innerText === "xʸ"){
+                        console.log("Mi kam");
+                         input =eval(input+super_script);
+                    }
+                    if(btn.innerText === "√"){
+                        console.log(input);
+                        let str = input.indexOf("√");
+                        let superscript = input.slice(0,str);
+                        status=true;
+                        outer:while(status){
+                            
+                            //alert(str);
+                            strn = str--
+                            //alert(superscript[strn] + ',' + strn)
+                            if(superscript[strn] ===("*"||"/"||"+"||"-")||(strn == -1)){
+                             let half1 = superscript.slice(0,strn);
+                             //alert(half1);
+                             let half2 = superscript.slice(strn+1,);
+                             //alert(half2);
+                             superscript = half2;
+                             console.log(superscript);
+                             let strs = input.indexOf("√");
+                        let sub = input.slice(strs+1,);
+                        console.log(sub);
+                        if(half1 ==''){
+                            input =  Math.pow(sub, (1/superscript));
+                        } else{
+                            input = half1 + '*' + Math.pow(sub, (1/superscript));
+                        }
+                             //debugger
+                             break outer;
+                            }
+                             else{
+                                
+                                //debugger
+
+                            }
+                            
+                        }
+                        
+                        //let half1 = superscript.slice()
+                        
+                    }   
+                }
+                
+            }
+
+            
+           
+           function todeg(angle){
+             return angle * (Math.PI/180)
+            }
+            function torad(angle){
+                return angle * (180/Math.PI)
+            }
+            let c = todeg(90)
+           let d = torad(90) 
+           console.log(c)
+            console.log(d)
+
+        </script>
+    </footer>
+</htmnl>
