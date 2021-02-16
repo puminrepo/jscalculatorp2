@@ -326,7 +326,7 @@
                     }
                     
                     else {
-                        //alert(input);
+                        ////alert(input);
                         //checks for pi constant
                         let pi = input.indexOf("3.141592653589793")
                         let fact = input.indexOf("!")
@@ -335,29 +335,29 @@
                             let strI = input.indexOf("3.141592653589793");
                             if(strI-1 !== ('*'||'/'||'+'||'-')&&(strI !==0)){
                                   let half1 = input.slice(strI,17);
-                                  //alert(half1);
+                                  ////alert(half1);
                                   let half2 = input.slice(0,strI);
-                                  //alert(half2);
+                                  ////alert(half2);
                                   input =half1 + '*' + half2;
-                                  //alert(input);
-                                //alert("aft" + strI);
+                                  ////alert(input);
+                                ////alert("aft" + strI);
                             }
                             else if(strI+1 !== ('*'||'/'||'+'||'-')&&(strI==0)){
-                               //alert("b4" + strI);
+                               ////alert("b4" + strI);
                                let half2 = input.slice(strI,17);
-                                  //alert(half2);
+                                  ////alert(half2);
                                   let half1 = input.slice(17,);
-                                  //alert(half1);
+                                  ////alert(half1);
                                   if((strI !== 0)){
                                       input = Math.PI * half1;
                                   }else{
                                     input = Math.PI;
                                   }
-                                  //alert(input);
+                                  ////alert(input);
 
                             }
                         }else
-                        //alert(input);
+                        ////alert(input);
                         ////checks for factorial sign ! in string
                         
                         if(fact !== -1){    
@@ -368,40 +368,40 @@
                                 input = factorial(half1);
                             }
                             else if(strI-1 !== ('*'||'/'||'+'||'-')&&(strI > 0)){
-                               //alert("b4" + strI);
+                               ////alert("b4" + strI);
                                let half2 = input.slice(0,strI-1);
-                                  //alert(half2);
+                                  ////alert(half2);
                                   let half1 = input.slice(strI-1,strI);
-                                  //alert(half1);
+                                  ////alert(half1);
                                   
                                   input =half1 + '*' + factorial(half1);
-                                  //alert(input);
+                                  ////alert(input);
 
                             }
                         }else
-                       // alert(input);
+                       // //alert(input);
                         ////checks for eulars # in string
 
                         if(eu !== -1){ 
-                           // alert(input)   
+                           // //alert(input)   
                             let strI = input.indexOf("e");
                             if(strI-1 !== ('*'||'/'||'+'||'-')&&(strI ==1)){
                                   let half1 = input.slice(0,strI);
-                                 // alert(half1);
+                                 // //alert(half1);
                                   let half2 = input.slice(strI,);
-                                  alert(half2);
+                                  //alert(half2);
                                   input =half1 * Math.E;
-                                  alert(input);
-                               // alert("aft" + strI);
+                                  //alert(input);
+                               // //alert("aft" + strI);
                                 
                             }
                             else if(strI+1 !== ('*'||'/'||'+'||'-')){
-                               alert("b4" + strI);
+                               //alert("b4" + strI);
                               // let half2 = input.slice(0,strI);
-                                //  alert(half2);
+                                //  //alert(half2);
                                   let half1 = input.slice(strI+1,);
                                   //debugger
-                                  //alert(half1);
+                                  ////alert(half1);
                                   
                                   if( (half1 === ""|| half1 === undefined)){
                                     input = Math.E ;                                
@@ -410,7 +410,7 @@
                                           
                                   }
                                   
-                                  //alert(input);
+                                  ////alert(input);
 
                             }
                         }
@@ -477,24 +477,24 @@
                     if(btn.innerText === "sin"){
                         console.log("sin here!");
                         let strI = input.indexOf('sin(');
-                        //alert(strI);
+                        ////alert(strI);
                         if(strI-1 !== ('*'||'/'||'+'||'-')&&(strI !== 0)){
                                   let half1 = input.slice(strI,);
-                                  //alert(half1);
+                                  ////alert(half1);
                                   let half2 = input.slice(0,strI);
-                                  //alert(half2);
+                                  ////alert(half2);
                                   input =half2+ '*Math.' + half1;
-                                  //alert(input);
-                                //alert("aft" + strI);
+                                  ////alert(input);
+                                ////alert("aft" + strI);
                             }
                             else if(strI+1 !== ('*'||'/'||'+'||'-')&&(strI == 0)){
-                               //alert("b4" + strI);
+                               ////alert("b4" + strI);
                                let half2 = input.slice(strI,);
-                                  //alert(half2);
+                                  ////alert(half2);
                                   let half1 = input.slice(0,strI);
-                                  //alert(half1);
+                                  ////alert(half1);
                                   input =half1+ 'Math.' + half2;
-                                  //alert(input);
+                                  ////alert(input);
 
                             }
                         console.log(eval(input));
@@ -503,24 +503,24 @@
                     if(btn.innerText === "sin-1"){
                         console.log("sin-1 here!");
                         let strI = input.indexOf('asin(');
-                        //alert(strI);
+                        ////alert(strI);
                         if(strI-1 !== ('*'||'/'||'+'||'-')&&(strI !== 0)){
                                   let half1 = input.slice(strI,);
-                                  //alert(half1);
+                                  ////alert(half1);
                                   let half2 = input.slice(0,strI);
-                                  //alert(half2);
+                                  ////alert(half2);
                                   input =half2+ '*Math.' + half1;
-                                  //alert(input);
-                                //alert("aft" + strI);
+                                  ////alert(input);
+                                ////alert("aft" + strI);
                             }
                             else if(strI+1 !== ('*'||'/'||'+'||'-')&&(strI == 0)){
-                               //alert("b4" + strI);
+                               ////alert("b4" + strI);
                                let half2 = input.slice(strI,);
-                                  //alert(half2);
+                                  ////alert(half2);
                                   let half1 = input.slice(0,strI);
-                                  //alert(half1);
+                                  ////alert(half1);
                                   input =half1+ 'Math.' + half2;
-                                  //alert(input);
+                                  ////alert(input);
 
                             }
                         console.log(eval(input));
@@ -531,25 +531,25 @@
                 if(btn.id === "ln"){
                     if(btn.innerText === "ln"){
                         let strI = input.indexOf('ln(');
-                        //alert(strI);
+                        ////alert(strI);
                         if((strI-1 !== ('*'||'/'||'+'||'-')&&(strI !== 0))){
-                               //alert("b4" + strI);
+                               ////alert("b4" + strI);
                                let half2 = input.slice(strI+3,);
-                                  //alert(half2);
+                                  ////alert(half2);
                                   let half1 = input.slice(0,strI);
-                                  //alert(half1);
+                                  ////alert(half1);
                                   input =half1+ '*Math.log(' + half2;
-                                  //alert(input);
+                                  ////alert(input);
 
                             }
                         else if(strI+1 !== ('*'||'/'||'+'||'-')&&(strI == 0)){
                                   let half1 = input.slice(strI+3,);
-                                  //alert(half1);
+                                  ////alert(half1);
                                   let half2 = input.slice(0,strI);
-                                  //alert(half2);
+                                  ////alert(half2);
                                   input =half2+ 'Math.log(' + half1;
-                                  //alert(input);
-                                //alert("aft" + strI);
+                                  ////alert(input);
+                                ////alert("aft" + strI);
                             }
                             
                         console.log(eval(input));
@@ -564,24 +564,24 @@
                     if(btn.innerText === "cos"){
                         console.log("cos here");
                         let strI = input.indexOf('cos(');
-                        //alert(strI);
+                        ////alert(strI);
                         if(strI-1 !== ('*'||'/'||'+'||'-')&&(strI !== 0)){
                                   let half1 = input.slice(strI,);
-                                  //alert(half1);
+                                  ////alert(half1);
                                   let half2 = input.slice(0,strI);
-                                  //alert(half2);
+                                  ////alert(half2);
                                   input =half2+ '*Math.' + half1;
-                                  //alert(input);
-                                //alert("aft" + strI);
+                                  ////alert(input);
+                                ////alert("aft" + strI);
                             }
                             else if(strI+1 !== ('*'||'/'||'+'||'-')&&(strI == 0)){
-                               //alert("b4" + strI);
+                               ////alert("b4" + strI);
                                let half2 = input.slice(strI,);
-                                  //alert(half2);
+                                  ////alert(half2);
                                   let half1 = input.slice(0,strI);
-                                  //alert(half1);
+                                  ////alert(half1);
                                   input =half1+ 'Math.' + half2;
-                                  //alert(input);
+                                  ////alert(input);
 
                             } 
                         console.log(eval(input));
@@ -589,24 +589,24 @@
                     }
                     if(btn.innerText === "cos-1"){
                         let strI = input.indexOf('acos(');
-                        //alert(strI);
+                        ////alert(strI);
                         if(strI-1 !== ('*'||'/'||'+'||'-')&&(strI !== 0)){
                                   let half1 = input.slice(strI,);
-                                  //alert(half1);
+                                  ////alert(half1);
                                   let half2 = input.slice(0,strI);
-                                  //alert(half2);
+                                  ////alert(half2);
                                   input =half2+ '*Math.' + half1;
-                                  //alert(input);
-                                //alert("aft" + strI);
+                                  ////alert(input);
+                                ////alert("aft" + strI);
                             }
                             else if(strI+1 !== ('*'||'/'||'+'||'-')&&(strI == 0)){
-                               //alert("b4" + strI);
+                               ////alert("b4" + strI);
                                let half2 = input.slice(strI,);
-                                  //alert(half2);
+                                  ////alert(half2);
                                   let half1 = input.slice(0,strI);
-                                  //alert(half1);
+                                  ////alert(half1);
                                   input =half1+ 'Math.' + half2;
-                                  //alert(input);
+                                  ////alert(input);
 
                             }
                         console.log(eval(input));
@@ -618,24 +618,24 @@
                     console.log("inv")
                     if(btn.innerText === "log"){
                         let strI = input.indexOf('log');
-                        //alert(strI + 'log');
+                        ////alert(strI + 'log');
                         if(strI-1 !== ('*'||'/'||'+'||'-')&&(strI !== 0)){
                                   let half1 = input.slice(strI+3,);
-                                  //alert(half1);
+                                  ////alert(half1);
                                   let half2 = input.slice(0,strI);
-                                  //alert(half2);
+                                  ////alert(half2);
                                   input =half2+ '*Math.log10' + half1;
-                                  //alert(input);
-                                //alert("aft" + strI);
+                                  ////alert(input);
+                                ////alert("aft" + strI);
                             }
                             else if(strI+1 !== ('*'||'/'||'+'||'-')&&(strI == 0)){
-                               //alert("b4" + strI);
+                               ////alert("b4" + strI);
                                let half2 = input.slice(strI+3,);
-                                  //alert(half2);
+                                  ////alert(half2);
                                   let half1 = input.slice(0,strI);
-                                  //alert(half1);
+                                  ////alert(half1);
                                   input =half1+ 'Math.log10' + half2;
-                                  //alert(input);
+                                  ////alert(input);
 
                             }
                         console.log(eval(input));
@@ -652,24 +652,24 @@
                     if(btn.innerText === "tan"){
                         let strI = input.indexOf('tan');
 
-                        //alert(strI);
+                        ////alert(strI);
                         if(strI-1 !== ('*'||'/'||'+'||'-')&&(strI !== 0)){
                                   let half1 = input.slice(strI,);
-                                  //alert(half1);
+                                  ////alert(half1);
                                   let half2 = input.slice(0,strI);
-                                  //alert(half2);
+                                  ////alert(half2);
                                   input =half2+ '*Math.' + half1;
-                                  //alert(input);
-                                //alert("aft" + strI);
+                                  ////alert(input);
+                                ////alert("aft" + strI);
                             }
                             else if(strI+1 !== ('*'||'/'||'+'||'-')&&(strI == 0)){
-                               //alert("b4" + strI);
+                               ////alert("b4" + strI);
                                let half2 = input.slice(strI,);
-                                  //alert(half2);
+                                  ////alert(half2);
                                   let half1 = input.slice(0,strI);
-                                  //alert(half1);
+                                  ////alert(half1);
                                   input =half1+ 'Math.' + half2;
-                                  //alert(input);
+                                  ////alert(input);
 
                             }
                         console.log(eval(input));
@@ -677,24 +677,24 @@
                     }
                     if(btn.innerText === "tan-1"){
                         let strI = input.indexOf('atan');
-                        //alert(strI);
+                        ////alert(strI);
                         if(strI-1 !== ('*'||'/'||'+'||'-')&&(strI !== 0)){
                                   let half1 = input.slice(strI,);
-                                  //alert(half1);
+                                  ////alert(half1);
                                   let half2 = input.slice(0,strI);
-                                  //alert(half2);
+                                  ////alert(half2);
                                   input =half2+ '*Math.' + half1;
-                                  //alert(input);
-                                //alert("aft" + strI);
+                                  ////alert(input);
+                                ////alert("aft" + strI);
                             }
                             else if(strI+1 !== ('*'||'/'||'+'||'-')&&(strI == 0)){
-                               //alert("b4" + strI);
+                               ////alert("b4" + strI);
                                let half2 = input.slice(strI,);
-                                  //alert(half2);
+                                  ////alert(half2);
                                   let half1 = input.slice(0,strI);
-                                  //alert(half1);
+                                  ////alert(half1);
                                   input =half1+ 'Math.' + half2;
-                                  //alert(input);
+                                  //////alert(input);
 
                             }
                         console.log(eval(input));
@@ -704,24 +704,24 @@
                 if(btn.id === "root"){
                     if(btn.innerText === "²√"){
                         let strI = input.indexOf('²√(');
-                        //alert(strI);
+                        //////alert(strI);
                         if(strI-1 !== ('*'||'/'||'+'||'-')&&(strI !== 0)){
                                   let half1 = input.slice(strI+2,);
-                                  //alert(half1);
+                                  //////alert(half1);
                                   let half2 = input.slice(0,strI);
-                                  //alert(half2);
+                                  //////alert(half2);
                                   input =half2+ '*Math.sqrt' + half1;
-                                  //alert(input);
-                                //alert("aft" + strI);
+                                  //////alert(input);
+                                //////alert("aft" + strI);
                             }
                             else if(strI+1 !== ('*'||'/'||'+'||'-')){
-                               //alert("b4" + strI);
+                               ////alert("b4" + strI);
                                let half2 = input.slice(strI+2,);
-                                  //alert(half2);
+                                  ////alert(half2);
                                   let half1 = input.slice(0,strI);
-                                  //alert(half1);
+                                  ////alert(half1);
                                   input =half1+ 'Math.sqrt' + half2;
-                                  //alert(input);
+                                  ////alert(input);
 
                             }
                         console.log(eval(input));
@@ -746,14 +746,14 @@
                         status=true;
                         outer:while(status){
                             
-                            //alert(str);
+                            ////alert(str);
                             strn = str--
-                            //alert(superscript[strn] + ',' + strn)
+                            ////alert(superscript[strn] + ',' + strn)
                             if(superscript[strn] ===("*"||"/"||"+"||"-")||(strn == -1)){
                              let half1 = superscript.slice(0,strn);
-                             //alert(half1);
+                             ////alert(half1);
                              let half2 = superscript.slice(strn+1,);
-                             //alert(half2);
+                             ////alert(half2);
                              superscript = half2;
                              console.log(superscript);
                              let strs = input.indexOf("√");
